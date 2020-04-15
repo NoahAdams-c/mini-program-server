@@ -1,0 +1,15 @@
+{
+  "name": "mini-program-server",
+  "version": "1.0.0",
+  "description": "Provide services to my mini-program",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "chenchen",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "request": "^2.88.2"
+  }
+}
