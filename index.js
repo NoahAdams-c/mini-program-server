@@ -3,7 +3,7 @@
  * @Author: chenchen
  * @Date: 2020-02-25 10:58:24
  * @LastEditors: chenchen
- * @LastEditTime: 2020-04-15 16:51:48
+ * @LastEditTime: 2020-04-15 16:53:03
  */
 
 const { getServerInstance, $ajax } = require("./init")
@@ -27,6 +27,6 @@ app.post("/wx/login", async (req, resp) => {
 			errorLog("Get session err", err.stack)
 			return {}
 		})
-	logger("Get session result", result)
+	logger("Get session result", JSON.stringify(result))
 	resp.send({ status: "ok" })
 })
