@@ -3,18 +3,30 @@
  * @Author: chenchen
  * @Date: 2020-02-25 10:58:24
  * @LastEditors: chenchen
- * @LastEditTime: 2020-04-15 15:47:50
+ * @LastEditTime: 2020-04-15 16:47:49
  */
 
-const { getServerInstance } = require("./init")
-const { logger, errorLog, logToFile } = require("./util")
-const request = require("request")
+const { getServerInstance, $ajax } = require("./init")
+const { logger, errorLog } = require("cc-vue-util")
+const { appId, appSecret } = require("./config")
 
 const app = getServerInstance()
 
-// wxlogin test
+// wxlogin
 app.post("/wx/login", async (req, resp) => {
 	const { code } = req.body
-	logger("", code)
+	logger("code", code)
+	const result = await $ajax
+		.doGet("/sns/jscode2session", {
+			appid: appId,
+			secret: appSecret,
+			js_code: code,
+			grant_type: "authorization_code"
+		})
+		.catch((err) => {
+			errorLog("Get session err", err.stack)
+			return {}
+		})
+	logger("Get session result", result)
 	resp.send({ status: "ok" })
 })
