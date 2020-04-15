@@ -3,11 +3,11 @@
  * @Author: chenchen
  * @Date: 2020-02-25 10:58:24
  * @LastEditors: chenchen
- * @LastEditTime: 2020-04-15 16:47:49
+ * @LastEditTime: 2020-04-15 16:51:48
  */
 
 const { getServerInstance, $ajax } = require("./init")
-const { logger, errorLog } = require("cc-vue-util")
+const { logger, errorLog } = require("cc-vue-util/common")
 const { appId, appSecret } = require("./config")
 
 const app = getServerInstance()
